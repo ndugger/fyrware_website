@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": true,
+        "baseUrl": ".",
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "lib": [ "dom", "es5", "es6", "es7", "es2017.object" ],
+        "module": "es6",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "build",
+        "paths": {
+            "*": [ "*" ]
+        },
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "target": "es5"
+    },
+    "include": [
+        "**/*"
+    ]
+}
