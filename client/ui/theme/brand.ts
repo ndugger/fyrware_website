@@ -1,8 +1,12 @@
 import StyledComponents from 'styled-components';
 
+import Assets from 'client/ui/theme/assets';
+import Palette from 'client/ui/theme/palette';
+
 export default {
     Container: StyledComponents.div`
-        background-color: rgb(0, 20, 40);
+        background-color: rgb(${ Palette.ui.background.toString() });
+        display: flex;
         flex-grow: 1;
         font-family: 'Heebo', sans-serif;
         height: 100%;
@@ -20,14 +24,14 @@ export default {
         z-index: 1;
     `,
     Logo: StyledComponents.h1`
-        color: white;
-        font-size: 2rem;
+        color: rgb(${ Palette.secondary.main.toString() });
+        font-size: 1.5rem;
         font-weight: 300;
         margin: 0;
         padding: 0;
     `,
     Photo: StyledComponents.div`
-        background-image: url(assets/scene_hq.jpg);
+        background-image: url(${ Assets.scene.src.toString() });
         background-position: right bottom;
         background-size: cover;
         bottom: 0;
