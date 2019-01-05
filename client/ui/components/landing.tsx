@@ -4,8 +4,12 @@ import * as ReactDOM from 'react-dom';
 import Canvas from 'client/ui/components/canvas';
 import Card from 'client/ui/components/card';
 import Flex from 'client/ui/components/flex';
+import Logo from 'client/ui/components/logo';
+import Tile from 'client/ui/components/tile';
+import X from 'client/ui/components/x';
 
 import Brand from 'client/ui/theme/brand';
+import Palette from 'client/ui/theme/palette';
 
 interface LandingState {
     height: number;
@@ -114,20 +118,48 @@ export default class Landing extends React.Component<any, LandingState> {
 
     public render (): React.ReactNode {
         const { height, width } = this.state;
+        const cards = [
+            'grok',
+            'fusion',
+            'foo',
+            'bar',
+            'baz'
+        ];
 
         return (
             <Brand.Container>
                 <Brand.Photo/>
                 <Canvas height={ height } width={ width } onMount={ canvas => this.handleCanvasMount(canvas) }/>
                 <Brand.Content>
-                    <Flex align='center' grow={ 1 } justify='center'>
-                        <Flex direction='column' height={ 800 } width={ 1280 }>
-                            <Flex shrink={ 1 }>
-                                <Brand.Logo>fyrware</Brand.Logo>
+                    <Flex direction='column' grow={ 1 } height='100%' justify='center' width='100%'>
+                        <Flex justify='center' width='100%'>
+                            <Flex width={ 1280 }>
+                                <X paddingBottom={ 8 } marginRight={ 4 } marginTop={ -16 }>
+                                    <Logo size={ 40 }/>
+                                </X>
+                                <X marginTop={ -6 }>
+                                    <Brand.Logo>
+                                        fyrware
+                                    </Brand.Logo>
+                                </X>
                             </Flex>
-                            <Flex grow={ 1 }>
-                                <Card>foo</Card>
-                            </Flex>
+                        </Flex>
+                        <Flex style={ { marginLeft: (width - 1280) / 2 } } wrap='nowrap'>
+
+                            { cards.map(card => (
+                                <X display='flex' flexShrink={ 0 } height={ 512 } marginRight={ 24 } width={ 640 }>
+                                    <Tile background={ `url(/assets/${ card }.jpg)` } scale={ (640 + 16) / 640 } style={ { flexGrow: 1 } }>
+                                        <Flex direction='column' grow={ 1 } height='100%' width='100%'>
+                                            <Flex grow={ 1 }/>
+                                            <X padding={ 64 } position='relative' overflow='hidden'>
+                                                <X backgroundImage={ `url(/assets/${ card }.jpg)` } backgroundPosition='bottom center' backgroundSize='auto 512px' filter='blur(12px)' position='absolute' top={ -12 } right={ -12 } bottom={ -12 } left={ -12 }/>
+                                                <X backgroundColor='rgba(0, 0, 0, 0.33)' position='absolute' top={ 0 } right={ 0 } bottom={ 0 } left={ 0 }/>
+                                            </X>
+                                        </Flex>
+                                    </Tile>
+                                </X>
+                            )) }
+
                         </Flex>
                     </Flex>
                 </Brand.Content>

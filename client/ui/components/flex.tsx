@@ -10,30 +10,34 @@ interface FlexProps {
     maxHeight?: string | number;
     maxWidth?: string | number;
     shrink?: number;
+    style?: any;
     width?: string | number;
+    wrap?: string;
 }
 
 export default class Flex extends React.Component<FlexProps> {
 
     public render (): React.ReactNode {
-        const { align, basis, children, direction, grow, height, justify, maxHeight, maxWidth, shrink, width } = this.props;
-        const style = {
+        const { align, basis, children, direction, grow, height, justify, maxHeight, maxWidth, shrink, style, width, wrap } = this.props;
+        const flexStyle = {
             alignItems: align,
             display: 'flex',
             flexBasis: basis,
             flexDirection: direction,
             flexGrow: grow,
             flexShrink: shrink,
+            flexWrap: wrap,
             height,
             justifyContent: justify,
             maxHeight,
             maxWidth,
-            width
+            width,
+            ...style
         };
 
         return (
             // @ts-ignore
-            <div style={ style }>
+            <div style={ flexStyle }>
                 { children }
             </div>
         );

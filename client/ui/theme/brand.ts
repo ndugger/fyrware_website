@@ -11,22 +11,23 @@ export default {
         font-family: 'Heebo', sans-serif;
         height: 100%;
         position: relative;
+        user-select: none;
         width: 100%;
     `,
     Content: StyledComponents.section`
-        bottom: 40px;
+        bottom: 0;
         display: flex;
         flex-direction: column;
-        left: 40px;
+        left: 0;
         position: absolute;
-        right: 40px;
-        top: 40px;
+        right: 0;
+        top: 0;
         z-index: 1;
     `,
     Logo: StyledComponents.h1`
         color: rgb(${ Palette.secondary.main.toString() });
-        font-size: 1.5rem;
-        font-weight: 300;
+        font-size: 1.4rem;
+        font-weight: 400;
         margin: 0;
         padding: 0;
     `,
