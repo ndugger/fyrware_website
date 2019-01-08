@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 interface FlexProps {
     align?: string;
@@ -9,6 +10,7 @@ interface FlexProps {
     justify?: string;
     maxHeight?: string | number;
     maxWidth?: string | number;
+    scroll?: string;
     shrink?: number;
     style?: any;
     width?: string | number;
@@ -17,8 +19,30 @@ interface FlexProps {
 
 export default class Flex extends React.Component<FlexProps> {
 
+    private handleWheel (event: React.UIEvent): void {
+
+        if (this.props.scroll === 'horizontal') {
+            // @ts-ignore
+            ReactDOM.findDOMNode(this).scrollLeft += event.deltaY;
+        }
+    }
+
     public render (): React.ReactNode {
-        const { align, basis, children, direction, grow, height, justify, maxHeight, maxWidth, shrink, style, width, wrap } = this.props;
+        const {
+            align,
+            basis,
+            children,
+            direction,
+            grow,
+            height,
+            justify,
+            maxHeight,
+            maxWidth,
+            shrink,
+            style,
+            width,
+            wrap
+        } = this.props;
         const flexStyle = {
             alignItems: align,
             display: 'flex',
@@ -37,7 +61,7 @@ export default class Flex extends React.Component<FlexProps> {
 
         return (
             // @ts-ignore
-            <div style={ flexStyle }>
+            <div style={ flexStyle } onWheel={ e => this.handleWheel(e) }>
                 { children }
             </div>
         );
