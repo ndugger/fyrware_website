@@ -2,8 +2,17 @@ import * as React from 'react';
 
 export default class X extends React.Component<any> {
 
+    public static defaultProps = {
+        tag: 'div'
+    };
+
     public render (): React.ReactNode {
-        const { children, ...style } = this.props;
-        return <div style={ style }>{ children }</div>;
+        const { children, tag, ...style } = this.props;
+
+        return (
+            <this.props.tag style={ style }>
+                { children }
+            </this.props.tag>
+        );
     }
 }

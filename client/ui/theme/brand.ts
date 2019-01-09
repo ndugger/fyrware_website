@@ -26,8 +26,9 @@ export default {
     `,
     Logo: StyledComponents.h1`
         color: rgb(${ Palette.secondary.main.toString() });
-        font-size: 1.4rem;
-        font-weight: 400;
+        font-family: 'Rajdhani', cursive;
+        font-size: 1.66rem;
+        font-weight: 600;
         margin: 0;
         padding: 0;
     `,
