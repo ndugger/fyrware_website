@@ -146,7 +146,7 @@ export default class Landing extends React.Component<any, LandingState> {
                 <Canvas height={ height } width={ width } onMount={ canvas => this.handleCanvasMount(canvas) }/>
                 <Brand.Content>
                     <Flex justify='flex-end'>
-                        <X padding={ 24 }>
+                        <X height={ 0 } padding={ 32 }>
                             <Button glyph='menu'/>
                         </X>
                     </Flex>
